@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
   Dimensions,
+  TextInput,
 } from 'react-native';
 
 const height = Dimensions.get('screen').height;
@@ -26,9 +27,21 @@ export default function Home({navigation}) {
         </View>
         <View style={styles.GridElement2}>
           <View style={styles.GridElement2Card}>
-            <View style={styles.CardHeading}></View>
-            <View style={styles.CardInput}></View>
-            <View style={styles.CardButton}></View>
+            <View style={styles.CardHeading}>
+              <Text style={styles.CardHeadingText}>
+                Please enter your Statement -
+              </Text>
+            </View>
+            <View style={styles.CardInput}>
+              <TextInput style={styles.CardButton}></TextInput>
+            </View>
+            <View style={styles.CardButton}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Results')}
+                style={styles.Button}>
+                <Text style={{alignSelf: 'center'}}>Submit</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <View style={styles.GridElement3}>
@@ -62,26 +75,44 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     fontWeight: 'bold',
   },
-  GridElement2: {flex: 5},
+  GridElement2: {flex: 5, paddingBottom: 10, paddingTop: 10},
   GridElement2Card: {
     flex: 1,
     width: (width * 9.5) / 10,
-    borderRadius: 10,
+    borderRadius: 5,
     height: '100%',
     alignSelf: 'center',
-    elevation: 6,
+    borderWidth: 1,
   },
   CardHeading: {
-    flex: 2,
-    backgroundColor: '#333333',
+    flex: 3,
+    justifyContent: 'center',
+    marginLeft: 15,
+  },
+  CardHeadingText: {
+    fontWeight: 'bold',
   },
   CardInput: {
     flex: 8,
-    backgroundColor: '#555555',
+    width: (width * 8.6) / 10,
+    borderRadius: 5,
+    height: '100%',
+    borderWidth: 1,
+    alignSelf: 'center',
   },
   CardButton: {
-    flex: 3,
-    backgroundColor: '#999999',
+    flex: 4,
+    justifyContent: 'center',
+  },
+  Button: {
+    marginRight: 15,
+    margin: 10,
+    width: (width * 3) / 10,
+    height: (width * 2) / 20,
+    borderRadius: 5,
+    borderWidth: 1,
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
   },
 
   GridElement3: {flex: 6},
