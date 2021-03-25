@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   Dimensions,
   TextInput,
+  ImageBackground,
 } from 'react-native';
 
 const height = Dimensions.get('screen').height;
@@ -33,13 +34,20 @@ export default function Home({navigation}) {
               </Text>
             </View>
             <View style={styles.CardInput}>
-              <TextInput style={styles.CardButton}></TextInput>
+              <TextInput
+                style={{
+                  alignSelf: 'flex-start',
+                  width: '100%',
+                  color: 'black',
+                }}></TextInput>
             </View>
             <View style={styles.CardButton}>
               <TouchableOpacity
                 onPress={() => navigation.navigate('Results')}
                 style={styles.Button}>
-                <Text style={{alignSelf: 'center'}}>Submit</Text>
+                <Text style={{alignSelf: 'center', color: 'white'}}>
+                  Submit
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -58,12 +66,11 @@ export default function Home({navigation}) {
 const styles = StyleSheet.create({
   Base: {
     flex: 1,
-    backgroundColor: 'white',
   },
   PrimaryGrid: {flex: 1, flexDirection: 'column'},
   GridElement1: {flex: 2, flexDirection: 'column'},
   GridElement1Text: {
-    color: '#29B8DB',
+    color: '#26538E',
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 10,
@@ -82,7 +89,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: '100%',
     alignSelf: 'center',
-    borderWidth: 1,
+    backgroundColor: '#DCF0F7',
   },
   CardHeading: {
     flex: 3,
@@ -97,7 +104,7 @@ const styles = StyleSheet.create({
     width: (width * 8.6) / 10,
     borderRadius: 5,
     height: '100%',
-    borderWidth: 1,
+    backgroundColor: 'white',
     alignSelf: 'center',
   },
   CardButton: {
@@ -109,10 +116,11 @@ const styles = StyleSheet.create({
     margin: 10,
     width: (width * 3) / 10,
     height: (width * 2) / 20,
-    borderRadius: 5,
-    borderWidth: 1,
+    borderRadius: 4,
+
     alignSelf: 'flex-end',
     justifyContent: 'center',
+    backgroundColor: '#26538E',
   },
 
   GridElement3: {flex: 6},

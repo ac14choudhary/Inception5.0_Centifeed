@@ -10,7 +10,6 @@ import {
 export default function Results({navigation}) {
   return (
     <View>
-      <Text>Results</Text>
       <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Text>GO TO HOME</Text>
       </TouchableOpacity>

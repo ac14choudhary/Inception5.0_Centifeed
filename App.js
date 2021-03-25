@@ -17,9 +17,9 @@ export default function App() {
           component={Home}
           options={{
             headerStyle: {
-              backgroundColor: '#121212',
+              backgroundColor: '#DCF0F7',
             },
-            headerTintColor: 'white',
+            headerTintColor: '#26538E',
           }}
         />
         <Stack.Screen
@@ -27,9 +27,9 @@ export default function App() {
           component={Results}
           options={{
             headerStyle: {
-              backgroundColor: '#121212',
+              backgroundColor: '#DCF0F7',
             },
-            headerTintColor: 'white',
+            headerTintColor: '#26538E',
           }}
         />
       </Stack.Navigator>
