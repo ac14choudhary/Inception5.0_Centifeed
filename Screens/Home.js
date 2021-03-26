@@ -22,8 +22,8 @@ export default function Home({navigation}) {
         <View style={styles.GridElement1}>
           <Text style={styles.GridElement1Text}>Welcome to Centifeed</Text>
           <Text style={styles.GridElement1Text2}>
-            Centifeed provides you an with your Sentiment as an output of the
-            statement
+            An approach to bind NLP and ML together to detect the emotions and
+            sentiments of a person through textual format.
           </Text>
         </View>
         <View style={styles.GridElement2}>
@@ -54,6 +54,11 @@ export default function Home({navigation}) {
         </View>
         <View style={styles.GridElement3}>
           <LottieView
+            style={{
+              alignSelf: 'center',
+              width: width - 5,
+              height: height / 2.5,
+            }}
             source={require('../Assets/Centifeed.json')}
             autoPlay
             loop
@@ -68,21 +73,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   PrimaryGrid: {flex: 1, flexDirection: 'column'},
-  GridElement1: {flex: 2, flexDirection: 'column'},
+  GridElement1: {flex: 3, flexDirection: 'column', justifyContent: 'center'},
   GridElement1Text: {
     color: '#26538E',
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 10,
-    marginLeft: 10,
+    margin: 10,
   },
   GridElement1Text2: {
     color: '#121212',
-    fontSize: 15,
+    fontSize: 12,
     marginHorizontal: 10,
     fontWeight: 'bold',
   },
-  GridElement2: {flex: 5, paddingBottom: 10, paddingTop: 10},
+  GridElement2: {flex: 6, paddingBottom: 10, paddingTop: 10},
   GridElement2Card: {
     flex: 1,
     width: (width * 9.5) / 10,
@@ -98,22 +102,24 @@ const styles = StyleSheet.create({
   },
   CardHeadingText: {
     fontWeight: 'bold',
+    fontSize: 18,
+    color: '#26538E',
   },
   CardInput: {
-    flex: 8,
+    flex: 5,
     width: (width * 8.6) / 10,
     borderRadius: 5,
-    height: '100%',
+
     backgroundColor: 'white',
     alignSelf: 'center',
   },
   CardButton: {
-    flex: 4,
+    flex: 3,
     justifyContent: 'center',
   },
   Button: {
     marginRight: 15,
-    margin: 10,
+
     width: (width * 3) / 10,
     height: (width * 2) / 20,
     borderRadius: 4,
@@ -123,5 +129,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#26538E',
   },
 
-  GridElement3: {flex: 6},
+  GridElement3: {flex: 8},
 });
