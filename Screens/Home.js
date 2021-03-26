@@ -3,7 +3,6 @@ import LottieView from 'lottie-react-native';
 import {
   View,
   StyleSheet,
-  button,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -19,7 +18,7 @@ export default function Home({navigation}) {
   return (
     <View style={{flex: 1}}>
       <ImageBackground
-        source={require('../Assets/BG.png')}
+        source={require('../assets/BG.png')}
         resizeMode={'cover'}
         style={{height: height, width: width, flex: 1}}>
         <View style={styles.PrimaryGrid}>
@@ -39,11 +38,17 @@ export default function Home({navigation}) {
               </View>
               <View style={styles.CardInput}>
                 <TextInput
+                  textAlignVertical="top"
+                  multiline
+                  numberOfLines={4}
+                  maxLength={100}
                   style={{
                     alignSelf: 'flex-start',
                     width: '100%',
                     color: 'black',
-                  }}></TextInput>
+                  }}
+                  placeholder="The workshop was amazing, would love to attend again "
+                  placeholderTextColor="#aaaaaa"></TextInput>
               </View>
               <View style={styles.CardButton}>
                 <TouchableOpacity
@@ -63,7 +68,7 @@ export default function Home({navigation}) {
                 width: width - 5,
                 height: height / 2.5,
               }}
-              source={require('../Assets/Centifeed.json')}
+              source={require('../assets/Centifeed.json')}
               autoPlay
               loop
             />
@@ -82,6 +87,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginHorizontal: 10,
     marginVertical: 5,
+    fontFamily: 'Montserrat-Black',
   },
   GridElement1Text2: {
     color: '#121212',
@@ -97,6 +103,7 @@ const styles = StyleSheet.create({
     height: '100%',
     alignSelf: 'center',
     backgroundColor: '#DCF0F7',
+    elevation: 4,
   },
   CardHeading: {
     flex: 3,

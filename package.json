@@ -19,7 +19,8 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-reanimated": "^2.0.1",
     "react-native-safe-area-context": "^3.2.0",
-    "react-native-screens": "^2.18.1"
+    "react-native-screens": "^2.18.1",
+    "react-native-svg-charts": "^5.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -34,5 +35,4 @@
   "jest": {
     "preset": "react-native"
   }
-
 }
