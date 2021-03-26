@@ -17,68 +17,71 @@ const width = Dimensions.get('screen').width;
 
 export default function Home({navigation}) {
   return (
-    <View style={styles.Base}>
-      <View style={styles.PrimaryGrid}>
-        <View style={styles.GridElement1}>
-          <Text style={styles.GridElement1Text}>Welcome to Centifeed</Text>
-          <Text style={styles.GridElement1Text2}>
-            An approach to bind NLP and ML together to detect the emotions and
-            sentiments of a person through textual format.
-          </Text>
-        </View>
-        <View style={styles.GridElement2}>
-          <View style={styles.GridElement2Card}>
-            <View style={styles.CardHeading}>
-              <Text style={styles.CardHeadingText}>
-                Please enter your Statement -
-              </Text>
-            </View>
-            <View style={styles.CardInput}>
-              <TextInput
-                style={{
-                  alignSelf: 'flex-start',
-                  width: '100%',
-                  color: 'black',
-                }}></TextInput>
-            </View>
-            <View style={styles.CardButton}>
-              <TouchableOpacity
-                onPress={() => navigation.navigate('Results')}
-                style={styles.Button}>
-                <Text style={{alignSelf: 'center', color: 'white'}}>
-                  Submit
+    <View style={{flex: 1}}>
+      <ImageBackground
+        source={require('../Assets/BG.png')}
+        resizeMode={'cover'}
+        style={{height: height, width: width, flex: 1}}>
+        <View style={styles.PrimaryGrid}>
+          <View style={styles.GridElement1}>
+            <Text style={styles.GridElement1Text}>Welcome to Centifeed</Text>
+            <Text style={styles.GridElement1Text2}>
+              An approach to bind NLP and ML together to detect the emotions and
+              sentiments of a person through textual format.
+            </Text>
+          </View>
+          <View style={styles.GridElement2}>
+            <View style={styles.GridElement2Card}>
+              <View style={styles.CardHeading}>
+                <Text style={styles.CardHeadingText}>
+                  Please enter your Statement -
                 </Text>
-              </TouchableOpacity>
+              </View>
+              <View style={styles.CardInput}>
+                <TextInput
+                  style={{
+                    alignSelf: 'flex-start',
+                    width: '100%',
+                    color: 'black',
+                  }}></TextInput>
+              </View>
+              <View style={styles.CardButton}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Results')}
+                  style={styles.Button}>
+                  <Text style={{alignSelf: 'center', color: 'white'}}>
+                    Submit
+                  </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
+          <View style={styles.GridElement3}>
+            <LottieView
+              style={{
+                alignSelf: 'center',
+                width: width - 5,
+                height: height / 2.5,
+              }}
+              source={require('../Assets/Centifeed.json')}
+              autoPlay
+              loop
+            />
+          </View>
         </View>
-        <View style={styles.GridElement3}>
-          <LottieView
-            style={{
-              alignSelf: 'center',
-              width: width - 5,
-              height: height / 2.5,
-            }}
-            source={require('../Assets/Centifeed.json')}
-            autoPlay
-            loop
-          />
-        </View>
-      </View>
+      </ImageBackground>
     </View>
   );
 }
 const styles = StyleSheet.create({
-  Base: {
-    flex: 1,
-  },
   PrimaryGrid: {flex: 1, flexDirection: 'column'},
   GridElement1: {flex: 3, flexDirection: 'column', justifyContent: 'center'},
   GridElement1Text: {
     color: '#26538E',
     fontSize: 30,
     fontWeight: 'bold',
-    margin: 10,
+    marginHorizontal: 10,
+    marginVertical: 5,
   },
   GridElement1Text2: {
     color: '#121212',

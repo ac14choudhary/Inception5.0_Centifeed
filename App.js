@@ -18,6 +18,7 @@ export default function App() {
           options={{
             headerStyle: {
               backgroundColor: '#DCF0F7',
+              shadowColor: '#000000',
             },
             headerTintColor: '#26538E',
           }}
@@ -28,6 +29,7 @@ export default function App() {
           options={{
             headerStyle: {
               backgroundColor: '#DCF0F7',
+              shadowColor: '#000000',
             },
             headerTintColor: '#26538E',
           }}
