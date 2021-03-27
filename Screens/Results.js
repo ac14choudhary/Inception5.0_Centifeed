@@ -135,6 +135,22 @@ export default function Results({navigation}) {
                 }}>
                 Positive
               </Text>
+
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                  marginTop: 20,
+                  alignSelf: 'center',
+                  color: '#FA0A1B',
+                  borderRadius: 4,
+                  borderWidth: 2,
+                  borderColor: '#FA0A1B',
+                  paddingHorizontal: '4%',
+                  padding: '3%',
+                }}>
+                Negative
+              </Text>
             </View>
           </View>
         </View>
@@ -170,5 +186,5 @@ const styles = StyleSheet.create({
   fourone: {flex: 2},
   fourtwo: {flex: 10, flexDirection: 'row', justifyContent: 'center'},
   fourtwoone: {flex: 1},
-  fourtwotwo: {flex: 1, justifyContent: 'center'},
+  fourtwotwo: {flex: 1, alignSelf: 'center'},
 });
