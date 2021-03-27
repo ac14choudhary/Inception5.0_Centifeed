@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   },
   GridElement1Text2: {
     color: '#121212',
-    fontSize: 12,
+    fontSize: 14,
     marginHorizontal: 10,
     fontWeight: 'bold',
   },
