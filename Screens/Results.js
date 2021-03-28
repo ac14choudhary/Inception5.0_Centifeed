@@ -124,7 +124,6 @@ export default function Results({navigation}) {
                 style={{
                   fontSize: 15,
                   fontWeight: 'bold',
-
                   alignSelf: 'center',
                   color: '#31AE33',
                   borderRadius: 4,
