@@ -8,13 +8,13 @@ import {
   TouchableOpacity,
   Dimensions,
   ImageBackground,
+  Image,
 } from 'react-native';
 import LottieView from 'lottie-react-native';
-
 const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 
-export default function Results({navigation}) {
+export default function Results({route}) {
   return (
     <View style={{flex: 1}}>
       <ImageBackground
@@ -58,7 +58,7 @@ export default function Results({navigation}) {
             </Text>
             <View style={styles.twotwo}>
               <Text style={{fontSize: 16, margin: 10}}>
-                The workshop was amazing, would love to attend again
+                {route.params.paramKey}
               </Text>
             </View>
           </View>
@@ -186,4 +186,11 @@ const styles = StyleSheet.create({
   fourtwo: {flex: 10, flexDirection: 'row', justifyContent: 'center'},
   fourtwoone: {flex: 1},
   fourtwotwo: {flex: 1, alignSelf: 'center'},
+
+  fourtwooneimage: {
+    alignSelf: 'center',
+    flex: 1,
+    height: '75%',
+    width: '75%',
+  },
 });

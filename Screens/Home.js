@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import LottieView from 'lottie-react-native';
 import {
   View,
@@ -15,6 +15,8 @@ const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 
 export default function Home({navigation}) {
+  const [input, setInput] = useState(' ');
+
   return (
     <View style={{flex: 1}}>
       <ImageBackground
@@ -23,7 +25,7 @@ export default function Home({navigation}) {
         style={{height: height, width: width, flex: 1}}>
         <View style={styles.PrimaryGrid}>
           <View style={styles.GridElement1}>
-            <Text style={styles.GridElement1Text}>Welcome to Centifeed</Text>
+            <Text style={styles.GridElement1Text}>Welcome to Sentifeed</Text>
             <Text style={styles.GridElement1Text2}>
               An approach to bind NLP and ML together to detect the emotions and
               sentiments of a person through textual format.
@@ -46,13 +48,17 @@ export default function Home({navigation}) {
                     alignSelf: 'flex-start',
                     width: '100%',
                     color: 'black',
+                    paddingHorizontal: 10,
                   }}
                   placeholder="The workshop was amazing, would love to attend again "
-                  placeholderTextColor="#aaaaaa"></TextInput>
+                  placeholderTextColor="#aaaaaa"
+                  onChangeText={input => setInput(input)}></TextInput>
               </View>
               <View style={styles.CardButton}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('Results')}
+                  onPress={() =>
+                    navigation.navigate('Results', {paramKey: input})
+                  }
                   style={styles.Button}>
                   <Text style={{alignSelf: 'center', color: 'white'}}>
                     Submit

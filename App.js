@@ -4,7 +4,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './Screens/Home';
 import Results from './Screens/Results';
-import {color} from 'react-native-reanimated';
 
 const Stack = createStackNavigator();
 
