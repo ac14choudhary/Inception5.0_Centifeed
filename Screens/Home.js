@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import LottieView from 'lottie-react-native';
+import Snackbar from 'react-native-snackbar';
 import {
   View,
   StyleSheet,
@@ -15,7 +16,7 @@ const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 
 export default function Home({navigation}) {
-  const [input, setInput] = useState(' ');
+  const [input, setInput] = useState(null);
 
   return (
     <View style={{flex: 1}}>
@@ -51,14 +52,22 @@ export default function Home({navigation}) {
                     paddingHorizontal: 10,
                   }}
                   placeholder="The workshop was amazing, would love to attend again "
-                  placeholderTextColor="#aaaaaa"
+                  placeholderTextColor="#cccccc"
                   onChangeText={input => setInput(input)}></TextInput>
               </View>
               <View style={styles.CardButton}>
                 <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('Results', {paramKey: input})
-                  }
+                  onPress={() => {
+                    if (!input) {
+                      Snackbar.show({
+                        text: 'Please enter a VALID Statement',
+                        duration: Snackbar.LENGTH_SHORT,
+                        backgroundColor: '#ff6666',
+                      });
+                    } else {
+                      navigation.navigate('Results', {paramKey: input});
+                    }
+                  }}
                   style={styles.Button}>
                   <Text style={{alignSelf: 'center', color: 'white'}}>
                     Submit

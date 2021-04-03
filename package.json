@@ -1,5 +1,5 @@
 {
-  "name": "Centifeed",
+  "name": "Sentifeed",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -20,6 +20,7 @@
     "react-native-reanimated": "^2.0.1",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^2.18.1",
+    "react-native-snackbar": "^2.4.0",
     "react-native-svg-charts": "^5.4.0"
   },
   "devDependencies": {
