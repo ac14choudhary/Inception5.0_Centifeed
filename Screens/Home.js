@@ -10,6 +10,7 @@ import {
   Dimensions,
   TextInput,
   ImageBackground,
+  StatusBar,
 } from 'react-native';
 
 const height = Dimensions.get('screen').height;
@@ -19,78 +20,94 @@ export default function Home({navigation}) {
   const [input, setInput] = useState(null);
 
   return (
-    <View style={{flex: 1}}>
-      <ImageBackground
-        source={require('../assets/BG.png')}
-        resizeMode={'cover'}
-        style={{height: height, width: width, flex: 1}}>
-        <View style={styles.PrimaryGrid}>
-          <View style={styles.GridElement1}>
-            <Text style={styles.GridElement1Text}>Welcome to Sentifeed</Text>
-            <Text style={styles.GridElement1Text2}>
-              An approach to bind NLP and ML together to detect the emotions and
-              sentiments of a person through textual format.
-            </Text>
-          </View>
-          <View style={styles.GridElement2}>
-            <View style={styles.GridElement2Card}>
-              <View style={styles.CardHeading}>
-                <Text style={styles.CardHeadingText}>
-                  Please enter your Statement -
-                </Text>
-              </View>
-              <View style={styles.CardInput}>
-                <TextInput
-                  textAlignVertical="top"
-                  multiline
-                  numberOfLines={4}
-                  maxLength={100}
-                  style={{
-                    alignSelf: 'flex-start',
-                    width: '100%',
-                    color: 'black',
-                    paddingHorizontal: 10,
-                  }}
-                  placeholder="The workshop was amazing, would love to attend again "
-                  placeholderTextColor="#cccccc"
-                  onChangeText={input => setInput(input)}></TextInput>
-              </View>
-              <View style={styles.CardButton}>
-                <TouchableOpacity
-                  onPress={() => {
-                    if (!input) {
-                      Snackbar.show({
-                        text: 'Please enter a VALID Statement',
-                        duration: Snackbar.LENGTH_SHORT,
-                        backgroundColor: '#ff6666',
-                      });
-                    } else {
-                      navigation.navigate('Results', {paramKey: input});
-                    }
-                  }}
-                  style={styles.Button}>
-                  <Text style={{alignSelf: 'center', color: 'white'}}>
-                    Submit
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="#DCF0F7" />
+      <View style={{flex: 1}}>
+        <ImageBackground
+          source={require('../assets/BG.png')}
+          resizeMode={'cover'}
+          style={{height: height, width: width, flex: 1}}>
+          <View style={styles.PrimaryGrid}>
+            <View style={styles.GridElement1}>
+              <Text style={styles.GridElement1Text}>Welcome to Sentifeed</Text>
+              <Text style={styles.GridElement1Text2}>
+                An approach to bind NLP and ML together to detect the emotions
+                and sentiments of a person through textual format.
+              </Text>
+            </View>
+            <View style={styles.GridElement2}>
+              <View style={styles.GridElement2Card}>
+                <View style={styles.CardHeading}>
+                  <Text style={styles.CardHeadingText}>
+                    Please enter your Statement -
                   </Text>
-                </TouchableOpacity>
+                </View>
+                <View style={styles.CardInput}>
+                  <TextInput
+                    textAlignVertical="top"
+                    multiline
+                    numberOfLines={4}
+                    maxLength={100}
+                    style={{
+                      alignSelf: 'flex-start',
+                      width: '100%',
+                      color: 'black',
+                      paddingHorizontal: 10,
+                    }}
+                    placeholder="The workshop was amazing, would love to attend again "
+                    placeholderTextColor="#cccccc"
+                    onChangeText={value => setInput(value)}></TextInput>
+                </View>
+                <View style={styles.SubmitButton}>
+                  <TouchableOpacity
+                    onPress={value => setInput('')}
+                    style={styles.Button1}>
+                    <Text style={{alignSelf: 'center', color: '#26538E'}}>
+                      Clear
+                    </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    onPress={() => {
+                      if (!input) {
+                        Snackbar.show({
+                          text: 'Please enter a VALID Sentence',
+                          duration: Snackbar.LENGTH_SHORT,
+                          backgroundColor: '#ff6666',
+                        });
+                      } else {
+                        navigation.navigate('Results', {paramKey: input});
+                        Snackbar.show({
+                          text: 'VALID Sentence recorded',
+                          duration: Snackbar.LENGTH_SHORT,
+                          backgroundColor: '#75B759',
+                        });
+                      }
+                    }}
+                    style={styles.Button2}>
+                    <Text style={{alignSelf: 'center', color: 'white'}}>
+                      Submit
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
+            <View style={styles.GridElement3}>
+              <LottieView
+                style={{
+                  alignSelf: 'center',
+                  width: width - 5,
+                  height: height / 2.5,
+                }}
+                source={require('../assets/Centifeed.json')}
+                autoPlay
+                loop
+              />
+            </View>
           </View>
-          <View style={styles.GridElement3}>
-            <LottieView
-              style={{
-                alignSelf: 'center',
-                width: width - 5,
-                height: height / 2.5,
-              }}
-              source={require('../assets/Centifeed.json')}
-              autoPlay
-              loop
-            />
-          </View>
-        </View>
-      </ImageBackground>
-    </View>
+        </ImageBackground>
+      </View>
+    </>
   );
 }
 const styles = StyleSheet.create({
@@ -138,13 +155,28 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignSelf: 'center',
   },
-  CardButton: {
+  SubmitButton: {
     flex: 3,
     justifyContent: 'center',
+    alignSelf: 'flex-end',
+
+    flexWrap: 'wrap',
   },
-  Button: {
+  Button1: {
     marginRight: 15,
 
+    width: (width * 3) / 10,
+    height: (width * 2) / 20,
+    borderRadius: 4,
+    borderColor: '#26538E',
+    borderWidth: 2,
+    alignSelf: 'flex-end',
+    justifyContent: 'center',
+    backgroundColor: '#DCF0F7',
+  },
+
+  Button2: {
+    marginRight: 15,
     width: (width * 3) / 10,
     height: (width * 2) / 20,
     borderRadius: 4,
