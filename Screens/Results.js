@@ -10,11 +10,31 @@ import {
   ImageBackground,
   Image,
 } from 'react-native';
+import {PieChart} from 'react-native-svg-charts';
 import LottieView from 'lottie-react-native';
 const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 
 export default function Results({route}) {
+  const data = [50, 10];
+
+  const randomColor = () =>
+    ('#' + ((Math.random() * 0xffffff) << 0).toString(16) + '000000').slice(
+      0,
+      7,
+    );
+
+  const pieData = data
+    .filter(value => value > 0)
+    .map((value, index) => ({
+      value,
+      svg: {
+        fill: randomColor(),
+        onPress: () => console.log('press', index),
+      },
+      key: `pie-${index}`,
+    }));
+
   return (
     <View style={{flex: 1}}>
       <ImageBackground
@@ -118,7 +138,9 @@ export default function Results({route}) {
             </Text>
           </View>
           <View style={styles.fourtwo}>
-            <View style={styles.fourtwoone}></View>
+            <View style={styles.fourtwoone}>
+              <PieChart style={{height: height / 6}} data={pieData} />
+            </View>
             <View style={styles.fourtwotwo}>
               <Text
                 style={{
@@ -184,8 +206,8 @@ const styles = StyleSheet.create({
   },
   fourone: {flex: 2},
   fourtwo: {flex: 10, flexDirection: 'row', justifyContent: 'center'},
-  fourtwoone: {flex: 1},
-  fourtwotwo: {flex: 1, alignSelf: 'center'},
+  fourtwoone: {flex: 1, justifyContent: 'center'},
+  fourtwotwo: {flex: 1, alignSelf: 'center', justifyContent: 'center'},
 
   fourtwooneimage: {
     alignSelf: 'center',

@@ -48,6 +48,7 @@ export default function Home({navigation}) {
                     multiline
                     numberOfLines={4}
                     maxLength={100}
+                    value={input}
                     style={{
                       alignSelf: 'flex-start',
                       width: '100%',
@@ -72,8 +73,13 @@ export default function Home({navigation}) {
                       if (!input) {
                         Snackbar.show({
                           text: 'Please enter a VALID Sentence',
-                          duration: Snackbar.LENGTH_SHORT,
+                          duration: Snackbar.LENGTH_LONG,
                           backgroundColor: '#ff6666',
+                          action: {
+                            text: 'OK',
+                            textColor: 'black',
+                            onPress: () => {},
+                          },
                         });
                       } else {
                         navigation.navigate('Results', {paramKey: input});
@@ -168,11 +174,11 @@ const styles = StyleSheet.create({
     width: (width * 3) / 10,
     height: (width * 2) / 20,
     borderRadius: 4,
-    borderColor: '#26538E',
     borderWidth: 2,
+    borderColor: '#26538E',
     alignSelf: 'flex-end',
     justifyContent: 'center',
-    backgroundColor: '#DCF0F7',
+    backgroundColor: 'white',
   },
 
   Button2: {
