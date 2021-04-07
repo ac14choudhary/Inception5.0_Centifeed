@@ -4,13 +4,19 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './Screens/Home';
 import Results from './Screens/Results';
+import Splash from './Screens/Splash';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Splash">
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{header: () => null}}
+        />
         <Stack.Screen
           name="Home"
           component={Home}
