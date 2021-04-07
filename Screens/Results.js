@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -16,6 +16,8 @@ const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 
 export default function Results({route}) {
+  const [positive, setPositive] = useState(0);
+  const [negative, setNegative] = useState(0);
   const data = [50, 10];
 
   const randomColor = () =>
@@ -139,7 +141,12 @@ export default function Results({route}) {
           </View>
           <View style={styles.fourtwo}>
             <View style={styles.fourtwoone}>
-              <PieChart style={{height: height / 6}} data={pieData} />
+              <PieChart
+                style={{height: height / 6}}
+                data={pieData}
+                outerRadius="100%"
+                innerRadius="3%"
+              />
             </View>
             <View style={styles.fourtwotwo}>
               <Text
@@ -154,7 +161,7 @@ export default function Results({route}) {
                   paddingHorizontal: '4%',
                   padding: '3%',
                 }}>
-                Positive
+                Positive - {positive}%
               </Text>
 
               <Text
@@ -170,7 +177,7 @@ export default function Results({route}) {
                   paddingHorizontal: '4%',
                   padding: '3%',
                 }}>
-                Negative
+                Negative - {negative}%
               </Text>
             </View>
           </View>

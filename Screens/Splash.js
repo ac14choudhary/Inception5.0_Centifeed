@@ -30,18 +30,15 @@ export default function Spalsh({navigation}) {
           flex: 1,
           justifyContent: 'center',
         }}>
-        <View>
-          <LottieView
-            style={{
-              alignSelf: 'center',
-              width: width - 5,
-              height: height / 2.5,
-            }}
-            source={require('../assets/Centifeed.json')}
-            autoPlay
-            loop
-          />
-        </View>
+        <Image
+          source={require('../assets/SENTIFEED.png')}
+          resizeMode="contain"
+          style={{
+            width: width / 1.4,
+            flex: 1,
+            justifyContent: 'center',
+            alignSelf: 'center',
+          }}></Image>
       </ImageBackground>
     </View>
   );
