@@ -12,12 +12,35 @@ import {
   ImageBackground,
   StatusBar,
 } from 'react-native';
+import axios from 'axios';
 
 const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 
 export default function Home({navigation}) {
   const [input, setInput] = useState(null);
+
+  function postApi() {
+    if (!input) {
+      Snackbar.show({
+        text: 'Please enter a VALID Sentence',
+        duration: Snackbar.LENGTH_LONG,
+        backgroundColor: '#ff6666',
+        action: {
+          text: 'OK',
+          textColor: 'White',
+          onPress: () => {},
+        },
+      });
+    } else {
+      navigation.navigate('Results', {paramKey: input});
+      Snackbar.show({
+        text: 'VALID Sentence recorded',
+        duration: Snackbar.LENGTH_SHORT,
+        backgroundColor: '#75B759',
+      });
+    }
+  }
 
   return (
     <>
@@ -70,25 +93,26 @@ export default function Home({navigation}) {
 
                   <TouchableOpacity
                     onPress={() => {
-                      if (!input) {
-                        Snackbar.show({
-                          text: 'Please enter a VALID Sentence',
-                          duration: Snackbar.LENGTH_LONG,
-                          backgroundColor: '#ff6666',
-                          action: {
-                            text: 'OK',
-                            textColor: 'black',
-                            onPress: () => {},
-                          },
-                        });
-                      } else {
-                        navigation.navigate('Results', {paramKey: input});
-                        Snackbar.show({
-                          text: 'VALID Sentence recorded',
-                          duration: Snackbar.LENGTH_SHORT,
-                          backgroundColor: '#75B759',
-                        });
-                      }
+                      postApi(input);
+                      // if (!input) {
+                      //   Snackbar.show({
+                      //     text: 'Please enter a VALID Sentence',
+                      //     duration: Snackbar.LENGTH_LONG,
+                      //     backgroundColor: '#ff6666',
+                      //     action: {
+                      //       text: 'OK',
+                      //       textColor: 'black',
+                      //       onPress: () => {},
+                      //     },
+                      //   });
+                      // } else {
+                      //   navigation.navigate('Results', {paramKey: input});
+                      //   Snackbar.show({
+                      //     text: 'VALID Sentence recorded',
+                      //     duration: Snackbar.LENGTH_SHORT,
+                      //     backgroundColor: '#75B759',
+                      //   });
+                      // }
                     }}
                     style={styles.Button2}>
                     <Text style={{alignSelf: 'center', color: 'white'}}>
