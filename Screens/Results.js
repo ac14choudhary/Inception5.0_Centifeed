@@ -101,7 +101,7 @@ export default function Results({route}) {
           <View style={styles.threetwo}>
             <View style={styles.threetwoone}>
               <LottieView
-                style={{alignSelf: 'center'}}
+                style={{alignSelf: 'center', height: height / 2.5}}
                 source={require('../assets/happy.json')}
                 autoPlay
                 loop
@@ -144,20 +144,18 @@ export default function Results({route}) {
               <PieChart
                 style={{height: height / 6}}
                 data={pieData}
-                outerRadius="100%"
+                outerRadius="90%"
                 innerRadius="3%"
               />
             </View>
             <View style={styles.fourtwotwo}>
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 16,
                   fontWeight: 'bold',
                   alignSelf: 'center',
                   color: '#31AE33',
                   borderRadius: 4,
-                  borderWidth: 2,
-                  borderColor: '#31AE33',
                   paddingHorizontal: '4%',
                   padding: '3%',
                 }}>
@@ -166,14 +164,12 @@ export default function Results({route}) {
 
               <Text
                 style={{
-                  fontSize: 15,
+                  fontSize: 16,
                   fontWeight: 'bold',
                   marginTop: 20,
                   alignSelf: 'center',
                   color: '#FA0A1B',
                   borderRadius: 4,
-                  borderWidth: 2,
-                  borderColor: '#FA0A1B',
                   paddingHorizontal: '4%',
                   padding: '3%',
                 }}>
@@ -206,7 +202,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  threetwoone: {flex: 1},
+  threetwoone: {flex: 1, justifyContent: 'center'},
   threetwotwo: {flex: 1, alignSelf: 'center'},
   four: {
     flex: 8,
