@@ -33,7 +33,12 @@ export default function Home({navigation}) {
         },
       });
     } else {
-      navigation.navigate('Results', {paramKey: input});
+      axios
+        .post('https://ayushfirst.herokuapp.com/test/' + input.trim())
+        .then(res => {
+          var response = res.data;
+          navigation.navigate('Results', {input, response});
+        });
       Snackbar.show({
         text: 'VALID Sentence recorded',
         duration: Snackbar.LENGTH_SHORT,

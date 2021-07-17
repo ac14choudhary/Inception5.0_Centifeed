@@ -20,6 +20,8 @@ var value = 'positive';
 const finalLottie = value == 'positive' ? lottieSource1 : lottieSource2;
 
 export default function Results({route}) {
+  const individualValue = route.params.response.ModelResponse;
+  console.log('RESPONSE', individualValue);
   const [positive, setPositive] = useState(0);
   const [negative, setNegative] = useState(0);
   const data = [50, 10];
@@ -84,7 +86,7 @@ export default function Results({route}) {
             </Text>
             <View style={styles.twotwo}>
               <Text style={{fontSize: 16, margin: 10}}>
-                {route.params.paramKey}
+                {route.params.input}
               </Text>
             </View>
           </View>
