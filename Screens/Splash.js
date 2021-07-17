@@ -20,27 +20,30 @@ export default function Spalsh({navigation}) {
   }, 3000);
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
-      <ImageBackground
-        source={require('../assets/BG.png')}
-        resizeMode={'cover'}
-        style={{
-          height: height,
-          width: width,
-          flex: 1,
-          justifyContent: 'center',
-        }}>
-        <Image
-          source={require('../assets/SENTIFEED.png')}
-          resizeMode="contain"
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="#BDE8FD" />
+      <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
+        <ImageBackground
+          source={require('../assets/BG.png')}
+          resizeMode={'cover'}
           style={{
-            width: width / 1.4,
+            height: height,
+            width: width,
             flex: 1,
             justifyContent: 'center',
-            alignSelf: 'center',
-          }}></Image>
-      </ImageBackground>
-    </View>
+          }}>
+          <Image
+            source={require('../assets/SENTIFEED.png')}
+            resizeMode="contain"
+            style={{
+              width: width / 1.4,
+              flex: 1,
+              justifyContent: 'center',
+              alignSelf: 'center',
+            }}></Image>
+        </ImageBackground>
+      </View>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -14,6 +14,10 @@ import {PieChart} from 'react-native-svg-charts';
 import LottieView from 'lottie-react-native';
 const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
+var lottieSource1 = require('../assets/happy.json');
+var lottieSource2 = require('../assets/angry.json');
+var value = 'positive';
+const finalLottie = value == 'positive' ? lottieSource1 : lottieSource2;
 
 export default function Results({route}) {
   const [positive, setPositive] = useState(0);
@@ -31,7 +35,7 @@ export default function Results({route}) {
     .map((value, index) => ({
       value,
       svg: {
-        fill: randomColor(),
+        fill: '#39B03A',
         onPress: () => console.log('press', index),
       },
       key: `pie-${index}`,
@@ -102,7 +106,7 @@ export default function Results({route}) {
             <View style={styles.threetwoone}>
               <LottieView
                 style={{alignSelf: 'center', height: height / 2.5}}
-                source={require('../assets/happy.json')}
+                source={lottieSource1}
                 autoPlay
                 loop
               />
