@@ -2,4 +2,8 @@
 Sentimental Analysis Application
 
 # Screenshots
-<img src = "https://drive.google.com/file/d/1JG2THbRrUTOuQMVd-369gEYmJNNu-Rcl/view?usp=sharing">
+<div class ="row">
+<img src = "Readme%20Images/Splash.jpg" width=300>
+<img src = "Readme%20Images/Home.jpg" width=300>
+<img src = "Readme%20Images/Results.jpg" width=300>
+<div>
