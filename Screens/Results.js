@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {PieChart} from 'react-native-svg-charts';
 import LottieView from 'lottie-react-native';
+import axios from 'axios';
 const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 var lottieSource1 = require('../assets/happy.json');
@@ -20,28 +21,39 @@ var value = 'positive';
 const finalLottie = value == 'positive' ? lottieSource1 : lottieSource2;
 
 export default function Results({route}) {
-  const individualValue = route.params.response.ModelResponse;
-  console.log('RESPONSE', individualValue);
+  const individualValue = route.params.response;
   const [positive, setPositive] = useState(0);
   const [negative, setNegative] = useState(0);
-  const data = [50, 10];
+  console.log(individualValue);
+  const total = positive + negative;
+  const data = [positive, negative];
 
-  const randomColor = () =>
-    ('#' + ((Math.random() * 0xffffff) << 0).toString(16) + '000000').slice(
-      0,
-      7,
-    );
+  useEffect(() => {
+    axios
+      .get('https://ayushfirst.herokuapp.com/test2')
+      .then(res => {
+        setPositive(res.data.Positive);
+        setNegative(res.data.Negative);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
+  console.log(positive);
+  console.log(negative);
 
-  const pieData = data
-    .filter(value => value > 0)
-    .map((value, index) => ({
-      value,
-      svg: {
-        fill: '#39B03A',
-        onPress: () => console.log('press', index),
-      },
-      key: `pie-${index}`,
-    }));
+  const pieData = [
+    {
+      key: 1,
+      value: positive,
+      svg: {fill: '#31AE33'},
+    },
+    {
+      key: 2,
+      value: negative,
+      svg: {fill: '#FA0A1B'},
+    },
+  ];
 
   return (
     <View style={{flex: 1}}>
@@ -108,11 +120,14 @@ export default function Results({route}) {
             <View style={styles.threetwoone}>
               <LottieView
                 style={{alignSelf: 'center', height: height / 2.5}}
-                source={lottieSource1}
+                source={
+                  individualValue == 'positive' ? lottieSource1 : lottieSource2
+                }
                 autoPlay
                 loop
               />
             </View>
+
             <View style={styles.threetwotwo}>
               <Text
                 style={{
@@ -120,14 +135,15 @@ export default function Results({route}) {
                   fontWeight: 'bold',
                   margin: 10,
                   alignSelf: 'center',
-                  color: '#31AE33',
+                  color: individualValue == 'positive' ? '#31AE33' : '#FA0A1B',
                   borderRadius: 4,
                   borderWidth: 2,
-                  borderColor: '#31AE33',
+                  borderColor:
+                    individualValue == 'positive' ? '#31AE33' : '#FA0A1B',
                   paddingHorizontal: '4%',
                   padding: '3%',
                 }}>
-                Positive
+                {individualValue}
               </Text>
             </View>
           </View>
@@ -165,7 +181,7 @@ export default function Results({route}) {
                   paddingHorizontal: '4%',
                   padding: '3%',
                 }}>
-                Positive - {positive}%
+                Positive - {Math.round((positive / total) * 100)}%
               </Text>
 
               <Text
@@ -179,7 +195,7 @@ export default function Results({route}) {
                   paddingHorizontal: '4%',
                   padding: '3%',
                 }}>
-                Negative - {negative}%
+                Negative - {Math.round((negative / total) * 100)}%
               </Text>
             </View>
           </View>

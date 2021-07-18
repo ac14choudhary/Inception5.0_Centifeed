@@ -17,7 +17,7 @@ import axios from 'axios';
 const height = Dimensions.get('screen').height;
 const width = Dimensions.get('screen').width;
 
-export default function Home({navigation}) {
+export default function Home({navigation, params}) {
   const [input, setInput] = useState(null);
 
   function postApi() {
@@ -36,8 +36,10 @@ export default function Home({navigation}) {
       axios
         .post('https://ayushfirst.herokuapp.com/test/' + input.trim())
         .then(res => {
-          var response = res.data;
+          var response = res.data.ModelResponse;
+          console.log(response);
           navigation.navigate('Results', {input, response});
+          setInput('');
         });
       Snackbar.show({
         text: 'VALID Sentence recorded',
